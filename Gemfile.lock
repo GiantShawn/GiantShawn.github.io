@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
