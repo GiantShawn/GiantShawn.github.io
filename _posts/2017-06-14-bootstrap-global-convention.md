@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Bootstrap中JavaScript的基本应用规则
+title: Bootstrap基本使用规范
 categories: WebTech FrontEnd Bootstrap
 ---
 
-Bootstrap中JavaScript的基本应用规则
-===========================
+Bootstrap基本使用规范
+===============
 
 Bootstrap的基本使用思路就是通过HTML tag和data attribute打开或关闭关联的style和
 actions，所以据官方的说法，如果不包含tag和attribute的改动，boostrap并不会生效。
@@ -25,8 +25,8 @@ $(document).off('.alert.data-api')
 {% endhighlight %}
 
 
-通用的编程接口规范
----------
+Javacript的通用编程接口规范
+------------------
 
 Bootstrap的各种plugin的相关接口都mixin到jQuery库中，保持和jQuery一致的编程风格，
 包括函数是chainable的，返回element集合。
@@ -58,6 +58,13 @@ $.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the moda
 ### 事件命名规范
 Bootstrap的事件使用“现在时态”表示事件准备发生，用“过去完成时”表示事件已经发生。如
 `show.bs.modal`和`shown.bs.modal`。
+
+
+Sass/CSS基本配置原则
+--------------
+我们可以通过在`_custom.scss`中override`scss/_variables.scss`中定义的全局常量来定制
+很多Bootstrap的尺寸以及开关很多style类型。
+
 
 
 
