@@ -24,5 +24,8 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 [markdown-cheetsheet]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+[quick-ref-kramdown]: https://kramdown.gettalong.org/quickref.html
+[detail-syntax-kramdown]: https://kramdown.gettalong.org/syntax.html
 [liquid-syntax]: https://shopify.github.io/liquid/basics/operators/
 [jekyll-variables-filters-cheetsheet]: https://learn.cloudcannon.com/jekyll-cheat-sheet/
+[Latax-Math-syntax]: https://en.wikibooks.org/wiki/LaTeX/Mathematics
