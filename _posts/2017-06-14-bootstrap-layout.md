@@ -12,9 +12,9 @@ Bootstrap的布局管理
 Bootstrap为了支持全平台、多尺寸、可转屏的设备，定义了5档(breakpoint)可静态配置（通过sass定义）
 的尺寸大小类型。这些类型从小到大分别是：
 * `xs`: (\\(x <= 576_{px}\\)) 竖屏手机
-* `sm`: (\\(576_{px} < x <= 768_{px}\\)) 横屏手机
-* `md`: (\\(768_{px} < x <= 992_{px}\\)) Tablet/iPad Air
-* `lg`: (\\(992_{px} < x <= 1200_{px}\\)) Desktop
+* `sm`: ($$576_{px} < x <= 768_{px}$$) 横屏手机
+* `md`: ($$768_{px} < x <= 992_{px}$$) Tablet/iPad Air
+* `lg`: ($$992_{px} < x <= 1200_{px}$$) Desktop
 * `xl`: (\\(x > 1200_{px}\\)) Large Desktop
 
 Bootstrap提供了方便的mixins给我们自定义style
