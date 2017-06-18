@@ -7,8 +7,14 @@ categories: WebTech FrontEnd Bootstrap
 Bootstrap的布局管理
 ==============
 
-基本的切分点(breakpoint)
-------------------
+
+网格系统(Grid System)
+-----------------
+Bootstrap的网格系统基本原理是把屏幕显示区域以网格的形式切分为横向12列，纵向列数不限的格子系统。
+一个格子系统被封装在class为container的HTML元素中(`<div class="container"> ... </div>`)，
+每行
+
+### 基本的切分点(breakpoint)
 Bootstrap为了支持全平台、多尺寸、可转屏的设备，定义了5档(breakpoint)可静态配置（通过sass定义）
 的尺寸大小类型。这些类型从小到大分别是：
 * `xs`: (\\(x <= 576_{px}\\)) 竖屏手机
@@ -18,7 +24,7 @@ Bootstrap为了支持全平台、多尺寸、可转屏的设备，定义了5档(
 * `xl`: (\\(x > 1200_{px}\\)) Large Desktop
 
 Bootstrap提供了方便的mixins给我们自定义style
-{% highlight javascript %}
+{% highlight sass %}
 @include media-breakpoint-up(xs) { ... }
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
@@ -47,7 +53,12 @@ Bootstrap提供了方便的mixins给我们自定义style
 
 {% endhighlight %}
 
+
 Z-index
 -------
 详情参看[Z-index](https://v4-alpha.getbootstrap.com/layout/overview/#z-index)。
+
+
+
+
 
