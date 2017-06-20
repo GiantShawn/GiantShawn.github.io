@@ -1,0 +1,286 @@
+---
+layout: post
+title: Bootstrap布局管理例子
+categories: WebTech FrontEnd Bootstrap
+issubtopic: true
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/assets/github.css">
+    <script type="application/javascript" src="/assets/highlight.pack.js"></script>
+
+    <style>
+        .title-ex {
+            font-weight: bold;
+            font-size: large;
+            color: red;
+            margin-top: 1em;
+        }
+        .valign .row {
+            min-height: 3rem;
+            background: lightgrey;
+            border-color: black;
+            border-width: 1px;
+            border: dotted ;
+        }
+        .color-1{
+            background: #2270ff;
+        }
+        .color-2{
+            background: #ff8bad;
+        }
+        .color-3{
+            background: #ffc95f;
+        }
+        .color-4{
+            background: #aeffd5;
+        }
+        .color-5{
+            background: #bd7bff;
+        }
+        .emphasize{
+            border: dotted;
+            border-color: black;
+        }
+
+    </style>
+</head>
+<body>
+<h1 class="windowsizedisplay"></h1>
+<div class="title-ex"> .container VS .container-fluid </div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col color-1">container</div>
+    </div>
+</div>
+<div class="container-fluid highlight-html">
+    <div class="row">
+        <div class="col color-2">container-fluid</div>
+    </div>
+</div>
+<div class="title-ex"> Autofill space horizontally(.col/.col-{xs,sm,md,lg,xl}) </div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col color-1">col</div>
+        <div class="col color-2">col</div>
+        <div class="col color-3">col</div>
+    </div>
+</div>
+<div class="title-ex"> Variable width with fit to content(.col-auto/.col-{xs,sm,md,lg,xl}-auto) </div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col color-1">col</div>
+        <div class="col-auto color-2">col-auto</div>
+    </div>
+</div>
+<div class="title-ex"> Fix width (.col-{1...12}/.col-{xs,sm,md,lg,xl}-{1...12})</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-2 color-1">col-2</div>
+        <div class="col-6 color-2">col-6</div>
+        <div class="col-4 color-3">col-4</div>
+    </div>
+</div>
+<div class="title-ex"> Fix with with auto (.col-{1...12}-auto/.col-xx-auto) </div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-2 color-1">col-2</div>
+        <div class="col-auto color-2">col-auto</div>
+        <div class="col-4 color-3">col-4</div>
+        
+    </div>
+</div>
+<div class="title-ex">Vertical Alignment (align-items-{start,center,end})</div>
+<div class="container valign highlight-html">
+    <div class="row align-items-start">
+        <div class="col color-1">col with align-items-start</div>
+        <div class="col color-1">col with align-items-start</div>
+        <div class="col color-1">col with align-items-start</div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col color-2">col with align-items-center</div>
+        <div class="col color-2">col with align-items-center</div>
+        <div class="col color-2">col with align-items-center</div>
+    </div>
+    <div class="row align-items-end">
+        <div class="col color-3">col with align-items-end</div>
+        <div class="col color-3">col with align-items-end</div>
+        <div class="col color-3">col with align-items-end</div>
+    </div>
+</div>
+<div class="title-ex">Vertical Alignment Special (align-self-{start,center,end})</div>
+<div class="container valign highlight-html">
+    <div class="row">
+        <div class="col align-self-start color-1">align-self-start</div>
+        <div class="col align-self-center color-2">align-self-center</div>
+        <div class="col align-self-end color-3">align-self-end</div>
+    </div>
+</div>
+<div class="title-ex">Horizontal Alignment (justify-content-{start,center,end,around,between})</div>
+<div class="container highlight-html">
+    <div class="row justify-content-start">
+        <div class="col-3 color-1">col-3</div>
+        <div class="col-3 color-1">col-3</div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3 color-2">col-3</div>
+        <div class="col-3 color-2">col-3</div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-3 color-3">col-3</div>
+        <div class="col-3 color-3">col-3</div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-3 color-4">col-3</div>
+        <div class="col-3 color-4">col-3</div>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-3 color-5">col-3</div>
+        <div class="col-3 color-5">col-3</div>
+    </div>
+</div>
+
+<div class="title-ex">No Gutter: allow non-zero row/column margin and padding</div>
+<div class="container highlight-html">
+    <div class="row no-gutters color-1">
+        <div class="col">col with .no-gutters</div>
+        <div class="col">col with .no-gutters</div>
+    </div>
+    <div class="row color-2">
+        <div class="col">col without .no-gutters</div>
+        <div class="col">col without .no-gutters</div>
+    </div>
+</div>
+
+<div class="title-ex">Column Wrapping</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-9 color-1">.col-9</div>
+        <div class="col-4 color-2">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+        <div class="col-6 color-3">.col-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+</div>
+
+<div class="title-ex">ClearFix(Seems like it has no effect in bootstrap4)</div>
+<div class="container highlight-html">
+    <div class="row color-1">
+        <div class="col-6 col-sm-3 emphasize">very looooooooong paragraph with clearfix</div>
+        <div class="col-6 col-sm-3 emphasize">2</div>
+
+        <!-- Add the extra clearfix for only the required viewport -->
+        <div class="clearfix hidden-sm-up"></div>
+
+        <div class="col-6 col-sm-3 emphasize">3</div>
+        <div class="col-6 col-sm-3 emphasize">4</div>
+    </div>
+    <div class="row color-2">
+        <div class="col-6 col-sm-3 emphasize">very looooooooong paragraph without clearfix</div>
+        <div class="col-6 col-sm-3 emphasize">2</div>
+        <div class="col-6 col-sm-3 emphasize">3</div>
+        <div class="col-6 col-sm-3 emphasize">4</div>
+    </div>
+</div>
+
+<div class="title-ex">Reordering(flex-{first/last/unordered}</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col flex-unordered color-1">1. flex-unordered</div>
+        <div class="col flex-last color-2">2. flex-last</div>
+        <div class="col flex-first color-3">3. flex-first</div>
+    </div>
+</div>
+
+<div class="title-ex">Offset: Move column to the right by increasing margin(offset-xx-{1-12})</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-sm-5 col-md-6 color-1">.col-sm-5 .col-md-6</div>
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 color-2">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-6 color-3">.col-sm-6.col-md-5.col-lg-6</div>
+        <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0 color-4">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+    </div>
+</div>
+
+<div class="title-ex">Push/Pull: Move column to the right/left. Push is similar to Offset({push,pull}-xx-{1,12})</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-9 push-3 color-1">1. col-9 with push 3</div>
+        <div class="col-3 pull-9 color-2">2. col-3 with pull 9</div>
+    </div>
+</div>
+
+<div class="title-ex">Nesting: put row-col structure inside col node</div>
+<div class="container highlight-html">
+    <div class="row">
+        <div class="col-9 emphasize color-1">
+            parent col-9
+            <div class="row emphasize color-2">
+                <div class="col-4 emphasize">col-4</div>
+                <div class="col-6 emphasize">col-6</div>
+            </div>
+        </div>
+        <div class="col-3 emphasize color-2">col-3</div>
+    </div>
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="application/javascript">
+    var updateSize = function (e) {
+        $('.windowsizedisplay').text("Width:" + $(window).width() + ', Height:' + $(window).height());
+    }
+
+    function Example(bk) {
+        $(bk).data('ex', this);
+        this.element = bk; // Official doc says there should have no memory leak caused by circle refs
+        this.type = 'graph'; // graph or code
+        this.html_code = null;
+        return this;
+    }
+
+    Example.prototype.toggle = function () {
+        if (this.type === 'graph') {
+            this.type = 'code';
+
+            var  block = this.element;
+            var hhtml = this.html_code = block.innerHTML;
+
+            $(block).empty();
+
+            var highlighttag = $('<pre><code class="xml"></code></pre>').children().text(hhtml).parent().appendTo(block);
+            hljs.highlightBlock(highlighttag[0]);
+        } else {
+            this.type = 'graph';
+            $(this.element).html(this.html_code);
+        }
+    };
+
+    $(window).resize(updateSize);
+
+    $(document).ready(function () {
+        updateSize();
+
+        $('.highlight-html').each(function (i, block) {
+            new Example(block);
+            $(block).click(function (e) {
+                $(e.currentTarget).data('ex').toggle();
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
