@@ -27,8 +27,10 @@ github_username:  GiantShawn
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
+plugins:
   - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock
+header_pages:
+  - about.md

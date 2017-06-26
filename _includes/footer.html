@@ -43,4 +43,50 @@
 
   </div>
 
+  {% if page.bootstrap_support == true %}
+  <script type="application/javascript">
+      function HtmlSnappet(bk) {
+          $(bk).data('ex', this);
+          this.element = bk; // Official doc says there should have no memory leak caused by circle refs
+          this.type = 'graph'; // graph or code
+          this.html_code = null;
+          return this;
+      }
+
+      HtmlSnappet.prototype.toggle = function () {
+          if (this.type === 'graph') {
+              this.type = 'code';
+
+              var  block = this.element;
+              var hhtml = this.html_code = block.innerHTML;
+
+              $(block).empty();
+
+              var highlighttag = $('<pre><code class="xml"></code></pre>').children().text(hhtml).parent().appendTo(block);
+              hljs.highlightBlock(highlighttag[0]);
+          } else {
+              this.type = 'graph';
+              $(this.element).html(this.html_code);
+          }
+      };
+
+
+      $(document).ready(function () {
+          $('.highlight-html').each(function (i, block) {
+              new HtmlSnappet(block);
+              $(block).click(function (e) {
+                  $(e.currentTarget).data('ex').toggle();
+              });
+          });
+          $('.highlight-html2').each(function (i, block) {
+              new HtmlSnappet(block);
+              $(block).dblclick(function (e) {
+                  $(e.currentTarget).data('ex').toggle();
+              });
+          });
+      });
+
+  </script>
+  {% endif %}
+
 </footer>
