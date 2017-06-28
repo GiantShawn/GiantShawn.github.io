@@ -149,6 +149,7 @@ Button
 </div>
 
 .btn也可以用在`<a>`和`<input>`标签里：
+
 <div class="highlight-html2">
     <h5 style="color:lightblue">Double click to see code</h5>
     <a class="btn btn-primary" href="#" role="button">Link</a>
@@ -157,6 +158,7 @@ Button
     <input class="btn btn-primary" type="submit" value="Submit">
     <input class="btn btn-primary" type="reset" value="Reset">
 </div>
+<div class="subtopicgap"></div>
 
 ### 大小 (btn-lg/btn-sm)
 <div class="highlight-html2">
@@ -164,18 +166,28 @@ Button
     <button type="button" class="btn btn-primary btn-lg">Large button</button>
     <button type="button" class="btn btn-primary btn-sm">Small button</button>
 </div>
+<div class="subtopicgap"></div>
 
 ### 块按钮（block level button）
 块按钮就是被按照block方式编排的按钮，默认会横向充满可显示区域。
+
 <div class="highlight-html2">
     <h5 style="color:lightblue">Double click to see code</h5>
     <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
     <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
 </div>
 
+<div class="subtopicgap"></div>
+
 ### 强制打开Active状态
+Bootstrap基本按钮有有四中种状态：normal(non-active)、active、focus、disabled。在PC上，把鼠标移动到按钮处，
+按钮会自动进入active状态（其实我理解就是hover），移出来后回到normal，点击按钮会进入focus
+和active态，这时候再挪开鼠标会回到focus&non-active态。注意，focus一旦获得，便只能通过
+点击其他空间去掉focus态。
+
 可以直接添加或者通过javascript添加.active的方法强制button获得active时的样式。
 `aria-pressed="true"`是辅助阅读技术用来获得控件状态的（如果没用可以去掉）
+
 <div class="highlight-html2">
     <h5 style="color:lightblue">Double click to see code</h5>
     <a href="javascript:void(0)" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
@@ -189,6 +201,7 @@ Button
         }
     </script>
 </div>
+<div class="subtopicgap"></div>
 
 ### disable按钮
 类似active状态，disable按钮的例子如下。
@@ -200,4 +213,257 @@ Button
     <a type="button" class="btn btn-secondary btn-lg disabled">Button</a>
 </div>
 
+<div class="subtopicgap"></div>
 
+### 二相按钮（切换active和non-active）
+添加`data-toggle="button"`到button元素可以让该按钮转变为二相按钮。点击之后会一直停留在
+active态，再次点击就返回non-active(normal)。由此看来active状态就是bootstrap的按钮
+选中状态。
+
+在js层面，可以通过`$().button('toggle')`来toggle active状态。
+
+<div class="highlight-html2">
+    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+      Single toggle
+    </button>
+</div>
+<div class="subtopicgap"></div>
+
+
+### Checkbox
+三个步骤创建checkbox：
+1. 给容器标上.btn-group和`data-toggle="buttons"`
+2. 在里面添加label和input(type="checkbox")，点击事件会发生在input元素上
+3. 如果你需要用javascript点击按钮，则相应地需要手动给label加上.active。
+
+<div class="highlight-html2">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
+      </label>
+      <label class="btn btn-primary">
+        <input type="checkbox" autocomplete="off"> Checkbox 2
+      </label>
+      <label class="btn btn-primary">
+        <input type="checkbox" autocomplete="off"> Checkbox 3
+      </label>
+    </div>
+</div>
+<div class="highlight-html2">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+      </label>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+
+Button Group
+------------
+Learn by example. 需要注意的是，button group 是可以嵌套的，具体可以看下面Drop-down menu的例子二。
+<div class="highlight-html2">
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2 btn-toolbar-sizesm" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">4</button>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="btnGroupAddon">@</span>
+        <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon">
+      </div>
+    </div>
+
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group btn-toolbar-sizelg" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">4</button>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="btnGroupAddon2">@</span>
+        <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon2">
+      </div>
+    </div>
+
+    <script type="application/javascript">
+    for (var sz of ['lg', 'sm']) {
+            (function (sz) {
+                var clsname = '.btn-toolbar-size' + sz;
+                var btnbar = $(clsname);
+                if (btnbar.length) {
+                    setInterval(function() {
+                        btnbar.toggleClass('btn-group-' + sz); // .btn-group-{lg/sm} for group size
+                    }, 2000);
+                }
+             })(sz);
+     }
+    </script>
+</div>
+
+创建vertical button group可以用`.btn-group-vertical`
+<div class="highlight-html2">
+  <div class="btn-group-vertical mr-2" role="group" aria-label="Vertical group">
+    <button type="button" class="btn btn-secondary">vertical 1</button>
+    <button type="button" class="btn btn-secondary">vertical 2</button>
+    <button type="button" class="btn btn-secondary">vertical 3</button>
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        vertical 4(dropdown)
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#">Dropdown link</a>
+        <a class="dropdown-item" href="#">Dropdown link</a>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary">vertical 5</button>
+  </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+### Drop-down menu
+<div class="highlight-html2">
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="#">Dropdown link</a>
+      <a class="dropdown-item" href="#">Dropdown link</a>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-html2">
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <button type="button" class="btn btn-secondary">1</button>
+      <button type="button" class="btn btn-secondary">2</button>
+
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item" href="#">Dropdown link</a>
+          <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+导航(nav)
+-------
+下面是两种创建导航栏的方法。两种方法的效果完全一样（除了写法不一样）
+<div class="highlight-html2">
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+</div>
+<div class="highlight-html2">
+<nav class="nav">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav>
+</div>
+<div class="highlight-html2">
+<h4 class="text-center">Justify content center</h4>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+</div>
+
+
+Card
+----
+先看例子
+<div class="highlight-html2">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" data-src="holder.js/100px180/" alt="100%x180" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ce8db64a3%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ce8db64a3%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22118.015625%22%20y%3D%2297.2%22%3E318x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <h6 class="card-subtitle">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">item1</li>
+          <li class="list-group-item">item2</li>
+          <li class="list-group-item">item3</li>
+      </ul>
+
+      <div class="card-block">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+       </div>
+    </div>
+</div>
+
+需要注意的是：
+1.  .card-link will make <a> follow one and another in a row
+
+### List Group
+<div class="highlight-html2">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+### Header and Footer
+<div class="highlight-html2">
+    <div class="card text-center">
+      <h3 class="card-header">
+        Featured
+      </h3>
+      <div class="card-block">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+</div>
