@@ -7,6 +7,9 @@ bootstrap_support: true
 
 Bootstrap.js
 ============
+<h4> Table of Contents </h4>
+* this ordered seed list will be replaced by toc as unordered list
+{:toc}
 
 通用规范
 ----
@@ -63,7 +66,7 @@ descendant elements which have the data-dismiss="alert" attribute. (Not necessar
 2. 添加alert-dismissible到alert元素的class列表（data-xxx attribute被bootstrap用来自动初始化很多功能）。
 
 两种方法关闭一个“可关闭”Alert Bar：
-1. 调用`$('.alert').alert('close')`: 可以搭配.fade和.show class打开渐隐效果。
+1. 调用`$('.alert').alert('close')`: 可以搭配.fade和.show class打开渐隐效果。关于.show和.fade的含义，可参考Nav Tab的渐隐介绍。
 2. 在Alert Bar里面添加一个包含`data-dismiss="alert"`的Button。点击该button的时候就会关闭containing alert bar。
 
 ### Alert的Event
@@ -391,6 +394,10 @@ Learn by example. 需要注意的是，button group 是可以嵌套的，具体�
   <a class="nav-link disabled" href="#">Disabled</a>
 </nav>
 </div>
+
+<div class='subtopicgap'></div>
+
+### 对齐
 <div class="highlight-html2">
 <h4 class="text-center">Justify content center</h4>
 <ul class="nav justify-content-center">
@@ -408,7 +415,116 @@ Learn by example. 需要注意的是，button group 是可以嵌套的，具体�
   </li>
 </ul>
 </div>
+<div class='subtopicgap'></div>
 
+### 纵向nav（.flex-column/.flex-{xs,sm,md,lg,xl}-column）
+<div class="highlight-html2">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+</div>
+<div class='subtopicgap'></div>
+
+### Tab
+用.nav-tabs创建nav tabs，用.active指定活跃tab页，包括.nav-link和.tab-pane，其中最重要的是tab-pane的.active。
+<div class="highlight-html2">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+      </li>
+      <li class="nav-item" id="myTab" >
+        <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home" role="tabpanel">Home Pane</div>
+      <div class="tab-pane" id="profile" role="tabpanel">Profile Pane</div>
+      <div class="tab-pane" id="messages" role="tabpanel">Messages Pane</div>
+      <div class="tab-pane" id="settings" role="tabpanel">Settings Pane</div>
+    </div>
+</div>
+
+当然可以通过javascript来触发tab切换，只要模拟一次tab即可。 这个tab函数会在tab pane被最终显示
+之前返回，也就是说shawn.bs.tab事件还没触发。
+{% highlight javascript %}
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+{% endhighlight %}
+
+<div class="highlight-html2">
+    <button id="gotoPane3" class="btn btn-success">跳到第三Pane</button>
+    <script type="application/javascript">
+        $('#gotoPane3').click(function (e) {
+            $('#myTab a').tab('show');
+        });
+    </script>
+</div>
+
+<div class='subtopicgap'></div>
+
+### 淡出式切换
+To make tabs fade in, add .fade to each .tab-pane. The first tab pane must also have .show to make the initial content visible.
+<div class="highlight-html2">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#fadehome" role="tab">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#fadeprofile" role="tab">Profile</a>
+      </li>
+      <li class="nav-item" id="myTab" >
+        <a class="nav-link" data-toggle="tab" href="#fademessages" role="tab">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#fadesettings" role="tab">Settings</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="fadehome" role="tabpanel">Fade Ex.1</div>
+      <div class="tab-pane fade" id="fadeprofile" role="tabpanel">Fade Ex.2</div>
+      <div class="tab-pane fade" id="fademessages" role="tabpanel">Fade Ex.3</div>
+      <div class="tab-pane fade" id="fadesettings" role="tabpanel">Fade Ex.4</div>
+    </div>
+</div>
+<div class='subtopicgap'></div>
+
+### 关于Nav的事件
+点击tab切换tab pane的时候，下面的事件会顺序触发：
+1. hide.bs.tab (on the current active tab)
+2. show.bs.tab (on the to-be-shown tab)
+3. hidden.bs.tab (on the previous active tab, the same one as for the hide.bs.tab event)
+4. shown.bs.tab (on the newly-active just-shown tab, the same one as for the show.bs.tab event)
+
+更详细的解析参考[官方文档](https://v4-alpha.getbootstrap.com/components/navs/#events)
+{% highlight javascript %}
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  e.target // newly activated tab
+  e.relatedTarget // previous active tab
+})
+{% endhighlight %}
 
 Card
 ----
@@ -467,3 +583,365 @@ Card
       </div>
     </div>
 </div>
+
+<div class="subtopicgap"></div>
+
+### Card中加入导航
+<div class="highlight-html2">
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+</div>
+
+下面这个是pill的look and feel，同时是一个可以work的nav tab。
+<div class="highlight-html2">
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#cardActive">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab"  href="#cardLink">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" data-toggle="tab" href="#cardDisabled">Disabled</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="cardActive" role="tabpanel">Pill ex.1</div>
+        <div class="tab-pane fade" id="cardLink" role="tabpanel">Pill ex.2</div>
+        <div class="tab-pane fade" id="cardDisabled" role="tabpanel">Pill ex.3</div>
+      </div>
+    </div>
+</div>
+<div class="subtopicgap"></div>
+
+### Image
+本章开头提供了用card-img-top的例子,同样的也会有card-img-bottom，这里主要讨论overlay的图片。
+<div class="highlight-html2">
+    <div class="card card-inverse" id="cardoverlayimage">
+      <img class="card-img" alt="100%x270" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22769%22%20height%3D%22270%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20769%20270%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15ceeb2e1c7%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A38pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15ceeb2e1c7%22%3E%3Crect%20width%3D%22769%22%20height%3D%22270%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22287.3125%22%20y%3D%22152.1%22%3E769x270%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 270px; width: 100%; display: block;">
+      <div class="card-img-overlay">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <script type="application/javascript">
+        setInterval(function() {
+            $('#cardoverlayimage').toggleClass('card-inverse');
+        }, 1000);
+    </script>
+</div>
+<div class="subtopicgap"></div>
+
+### 反色效果
+在card元素中加入.card-inverse可创建发色效果的card。具体例子可看上面Image小节。
+
+### bootstrap內建的多种card color scheme
+<div class="highlight-html2" id="cardcolorscheme">
+    <div class="card card-inverse card-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-inverse card-success mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-inverse card-info mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-inverse card-warning mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-inverse card-danger text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <script type="application/javascript">
+        setInterval(function() {
+            $('#cardcolorscheme .card').toggleClass('card-inverse');
+        }, 1000);
+    </script>
+</div>
+<div class="subtopicgap"></div>
+<div class="highlight-html2">
+    <div class="card card-outline-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-outline-secondary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-outline-success mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-outline-info mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-outline-warning mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card card-outline-danger text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+### 多种Card的布局类型
+#### 例子一: card-group
+注意的是用了card-group之后card-footer会自动对齐。
+<div class="highlight-html2">
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="/assets/256-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/assets/256-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/assets/256-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="subtopicgap"></div>
+
+#### 例子二: card-deck
+<div class="highlight-html2">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="/assets/235-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/assets/235-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="/assets/235-180.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="subtopicgap"></div>
+
+#### 例子三: card-columns
+card-column的style类似[Masonry](https://masonry.desandro.com/)。
+<div class="highlight-html2">
+    <div class="card-columns">
+      <div class="card">
+        <img class="card-img-top img-fluid" src="/assets/242-160.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title that wraps to a new line</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+      <div class="card p-3">
+        <blockquote class="card-block card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>
+            <small class="text-muted">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card">
+        <img class="card-img-top img-fluid" src="/assets/242-160.svg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card card-inverse card-primary p-3 text-center">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+          <footer>
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img img-fluid" src="/assets/242-260.svg" alt="Card image">
+      </div>
+      <div class="card p-3 text-right">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>
+            <small class="text-muted">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+<div class="subtopicgap"></div>
+
+
+
+
+Navbar导航栏（统称，不仅可以包含nav，还可以包含button、text、brand、icon等）
+----------------------------------------------------
+* .navbar-brand for your company, product, or project name.
+* .navbar-nav for a full-height and lightweight navigation (including support for dropdowns).
+* .navbar-toggler for use with our collapse plugin and other navigation toggling behaviors.
+* .form-inline for any form controls and actions.
+* .navbar-text for adding vertically centered strings of text.
+* .collapse.navbar-collapse for grouping and hiding navbar contents by a parent breakpoint.
+
+<div class="highlight-html2">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Navbar</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+</div>
+<div class="subtopicgap"></div>
