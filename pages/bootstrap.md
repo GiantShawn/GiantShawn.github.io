@@ -1023,19 +1023,18 @@ Dropdowns(下拉菜单)
 Wrap the dropdown’s toggle (your button or link) and the dropdown menu within .dropdown, or another element that declares position: relative;
 例子
 <div class="highlight-html2">
-    <div class="dropdown">
+    <div class="dropdown d-inline-block">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown button
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <h6 class="dropdown-header">Dropdown header</h6>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </div>
-</div>
 
-<div class="highlight-html2">
     <!-- Example split danger button -->
     <div class="btn-group">
       <button type="button" class="btn btn-danger">Action</button>
@@ -1044,7 +1043,7 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item disabled" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Separated link</a>
@@ -1077,6 +1076,9 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
           <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </div>
+</div>
+
+<div class="highlight-html2">
 
     <!-- Small button groups (default and split) -->
     <div class="btn-group">
@@ -1104,8 +1106,8 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
     </div>
 </div>
 
-向上的menu。
-<div class='highlight-html2">
+#### 向上的menu。
+<div class="highlight-html2">
     <!-- Default dropup button -->
     <div class="btn-group dropup">
       <button type="button" class="btn btn-secondary">Dropup</button>
@@ -1135,6 +1137,7 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
     </div>
 </div>
 
+#### Menu的item可以用button元素
 <div class="highlight-html2">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -1148,6 +1151,359 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
     </div>
 </div>
 
+#### 有关移动设备上要注意的
+On mobile devices, opening a dropdown adds a .dropdown-backdrop as a
+tap area for closing dropdown menus when tapping outside the menu, a
+requirement for proper iOS support. This means that switching from an
+open dropdown menu to a different dropdown menu requires an extra tap on mobile.
+
+#### Javascript来控制Dropdown
+[官方文档](https://v4-alpha.getbootstrap.com/components/dropdowns/#via-javascript)
+
+Form
+----
+Bootstrap Form的所有input元素都必须要带有type属性。
+
+### 基本使用例子
+form -> .form-group -> .form-check
+
+<div class="highlight-html2">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">Example select</label>
+        <select class="form-control" id="exampleSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect2">Example multiple select</label>
+        <select multiple class="form-control" id="exampleSelect2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleTextarea">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+      </div>
+      <fieldset class="form-group">
+        <legend>Radio buttons</legend>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+        <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+        <div class="form-check disabled">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            Option three is disabled
+          </label>
+        </div>
+      </fieldset>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input">
+          Check me out
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="highlight-html2">
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Text</label>
+      <div class="col-10">
+        <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-search-input" class="col-2 col-form-label">Search</label>
+      <div class="col-10">
+        <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-email-input" class="col-2 col-form-label">Email</label>
+      <div class="col-10">
+        <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-url-input" class="col-2 col-form-label">URL</label>
+      <div class="col-10">
+        <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+      <div class="col-10">
+        <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-password-input" class="col-2 col-form-label">Password</label>
+      <div class="col-10">
+        <input class="form-control" type="password" value="hunter2" id="example-password-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-number-input" class="col-2 col-form-label">Number</label>
+      <div class="col-10">
+        <input class="form-control" type="number" value="42" id="example-number-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+      <div class="col-10">
+        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-date-input" class="col-2 col-form-label">Date</label>
+      <div class="col-10">
+        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-month-input" class="col-2 col-form-label">Month</label>
+      <div class="col-10">
+        <input class="form-control" type="month" value="2011-08" id="example-month-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-week-input" class="col-2 col-form-label">Week</label>
+      <div class="col-10">
+        <input class="form-control" type="week" value="2011-W33" id="example-week-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-time-input" class="col-2 col-form-label">Time</label>
+      <div class="col-10">
+        <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-color-input" class="col-2 col-form-label">Color</label>
+      <div class="col-10">
+        <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+      </div>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+### Inline的Form Element
+使用form-inline来创建inline的form。
+由于inline form是使用`display:flex`来创建的，所以你可以用spacing utils和flex utils
+来微调layout。
+
+另外，所有bootstrap form的元素都应该配有label，即使你不希望它显示在屏幕中。在那种情况下
+你可以用.sr-only来隐藏。
+
+<div class="highlight-html2">
+    <form class="form-inline">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+
+      <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<div class="subtopicgap"></div>
+
+### 用格子系统layout form
+<div class="highlight-html2">
+    <div class="container">
+      <form>
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          </div>
+        </div>
+        <fieldset class="form-group row">
+          <legend class="col-form-legend col-sm-2">Radios</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+              </label>
+            </div>
+            <div class="form-check disabled">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                Option three is disabled
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <label class="col-sm-2">Checkbox</label>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Check me out
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+#### 支持指定控件大小。
+<div class="highlight-html2">
+    <div class="container">
+      <form>
+        <div class="form-group row">
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control form-control-sm" id="smFormGroupInput" placeholder="you@example.com">
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div class="subtopicgap"></div>
+
+### Checkbox
+Form开始的介绍例子显示了block排列下的checkbox，实际上还可以使用`.form-check-inline`
+创建inline的checkbox。
+<div class="highlight-html2">
+    <div class="form-check form-check-inline">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+      </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+      </label>
+    </div>
+    <div class="form-check form-check-inline disabled">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+      </label>
+    </div>
+</div>
+
+<div class='subtopicgap'></div>
+
+### 静态控件
+<div class="highlight-html2">
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <p class="form-control-static">email@example.com</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+      </div>
+    </form>
+</div>
+
+### Disable控件
+<div class="highlight-html2">
+    <form>
+      <fieldset disabled>
+        <div class="form-group">
+          <label for="disabledTextInput">Disabled input</label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        </div>
+        <div class="form-group">
+          <label for="disabledSelect">Disabled select menu</label>
+          <select id="disabledSelect" class="form-control">
+            <option>Disabled select</option>
+          </select>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Can't check this
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+</div>
+
+### 只读控件
+<div class="highlight-html2">
+<form>
+    <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+</form>
+</div>
 
 Navbar导航栏（统称，不仅可以包含nav，还可以包含button、text、brand、icon等）
 ----------------------------------------------------
