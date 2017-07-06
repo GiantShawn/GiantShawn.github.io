@@ -787,11 +787,11 @@ Tootips
     </button>
 
     <button type="button" class="btn btn-primary" onclick="$('[data-toggle=\'tooltip\']').tooltip();">
-        Click to enable Tooptips
+        Click to enable Tooltips
     </button>
 </div>
 
-### Tooptips的内容可以是html
+### Tooltips的内容可以是html
 <div class="highlight-html2">
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
       Tooltip with HTML
