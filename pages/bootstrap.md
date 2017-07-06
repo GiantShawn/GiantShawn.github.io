@@ -801,7 +801,7 @@ Tootips
 List Group
 ----------
 看例子。
-<div class='highlight-html2">
+<div class="highlight-html2">
     <ul class="list-group">
       <li class="list-group-item disabled">Cras justo odio</li>
       <li class="list-group-item active">Cras justo odio</li>
